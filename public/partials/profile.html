@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="offset-s10 s2">
+    <button id="logout" type='button' class="btn-floating btn-large light-green accent-3"><i ng-click="(user)">Bye</i></button>
+  </div>
+</div>
+<!-- <div class="container"> -->
+  <div class="row col s12">
+    <div class="col s12 m6">
+      <img src="/img/yo.gif" alt="">
+      <!-- <h1 id="profile">PROFILE</h1> -->
+       <div id="yo2" class="phonePic">
+        <img src="/img/rundmc.jpg" alt="">
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <h3 id="profileH">My Profile</h3>
+      <input type="text" ng-model='user.bio'>
+      <label for="">Bio</label>
+      <input type="text" ng-model='user.loc'>
+      <label for="">Location</label>
+      <button id="addButton" class="waves-effect waves-light btn purple accent-3" ng-click="updateUser(user)"><i class="material-icons left">perm_identity</i>Update Profile</button>
+    </div>
+  </div>
+  <h5>Write a Yo!</h5>
+    <div class="col s8">
+      <i class="material-icons prefix">mode_edit</i>
+      <input type="text" ng-model='newMessage.content' placeholder="New Message">
+    </div>
+  <hr>
+  <hr>
+  <h5>Send a Yo!</h5>
+  <div class="row s12">
+    <!-- <div class="col s8"> -->
+    <ul class="collection" id="messageList">
+      <li class="collection-item avatar" ng-repeat="message in messages | filter: filterText track by $index">
+        <img src="/img/peeps.jpeg" alt="" class="circle">
+        <span class="title">{{message.senderId}}</span>
+        <tt ng-model="sender">Yo: {{newMessage.content}}</tt>
+        <button type='button' class="btn-floating btn light-green accent-3"><i ng-click="addMessage(message, user)">Yo!</i></button>
+      </li>
+    </ul>
+  </div>
+  <h5>Look at All Your Yos!</h5>
+    <div class="row">
+      <div class="input-field col s12 m12">
+      <input type="text" class="filterLine" ng-model="filterText">
+      <label for="">Search Messages</label>
+    </div>
+    </div>
+
+  <table class="responsive-table">
+     <thead>
+       <tr>
+           <th data-field="id">Time</th>
+           <th data-field="name">From</th>
+           <th data-field="price">Message</th>
+       </tr>
+     </thead>
+
+     <tbody>
+       <tr ng-repeat="message in messages | orderBy: 'createdAt' | filter: filterText track by $index">
+         <td>{{message.createdAt | date: 'short'}}</td>
+         <td>{{message.senderId}}</td>
+         <td>{{message.content}}</td>
+       </tr>
+     </tbody>
+   </table>
+
+
+<!-- revisit dropDown
+<div class="input-field row col s12">
+  <div class="col s2">
+    <select class='browser-default' name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect"> -->
+      <!-- <option id="inputH">Say Yo To:</option> -->
+      <!-- <option value="{{message.senderId}}" ng-repeat='message in messages'>{{message.senderId}}</option>
+    </select>
+  </div>
+  <div class="col s8">
+    <i class="material-icons prefix">mode_edit</i>
+    <input type="text" ng-model='message.content' placeholder="New Message">
+  </div>
+  <div class="col s2">
+    <button type='button' class="btn-floating btn-large light-green accent-3"><i ng-click="addMessage(message)">Yo!</i></button>
+  </div>
+</div>
+<tt ng-model="sender">Sending Message To: {{data.repeatSelect}}</tt>
+<hr>
+<hr> -->

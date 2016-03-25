@@ -1,0 +1,59 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-color: #b3e5fc;*/
+}
+
+a {
+  color: #00B7FF;
+}
+
+#formBox {
+  margin-top: 20px;
+}
+
+#loginForm {
+  margin-top: 50px;
+}
+
+.formHeader {
+  color: #18ffff;
+  font-size: 34px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#profile {
+  margin-left: 200px;
+}
+
+#yo {
+  /*margin-top: 50px;*/
+  margin-left: 200px;
+}
+
+#profileH {
+  margin-top: 200px;
+  margin-left: 70px;
+}
+
+#inputH {
+  margin-top: 10px;
+  color: #18ffff;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+select {
+  border: solid 4px #18ffff;
+}
+
+#addButton {
+  margin-top: 60px;
+  margin-left: 400px;
+}
+
+#bye {
+  margin-left: 700px;
+}
