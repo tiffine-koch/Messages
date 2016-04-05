@@ -1,8 +1,24 @@
 var express = require('express');
 var stormpath = require('express-stormpath');
 
+var messages = require('./routes/messages');
+
 var app = express();
-app.use(stormpath.init(app, { website: true }));
+// app.use(stormpath.init(app, { website: true }));
+
+app.use(stormpath.init(app, {
+  website: true,
+  expand: {
+    customData: true
+    }
+}));
+
+app.get('/dashboard', stormpath.loginRequired, function(req, res) {
+  res.send('You have reached the dashboard page! You must be logged in.');
+});
+
+app.use('/messages', stormpath.loginRequired, messages);
+
 
 app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
@@ -24,13 +40,12 @@ app.on('stormpath.ready', function() {
 // });
 //
 // var account = {
-//   givenName: 'Joe',
-//   surname: 'Stormtrooper',
-//   username: 'tk421',
-//   email: 'tk421@stormpath.com',
-//   password: 'Changeme1',
+//   firstName: 'Tiffine',
+//   lastName: 'Koch',
+//   email: 'tiffine.koch@gmail.com',
+//   password: 'password20',
 //   customData: {
-//     favoriteColor: 'white'
+//     message: 'white'
 //   }
 // };
 //
@@ -38,7 +53,7 @@ app.on('stormpath.ready', function() {
 //   console.log('Account:', createdAccount);
 // });
 //
-// application.getAccounts({ username: 'tk421' }, function(err, accounts) {
+// application.getAccounts({ email: 'tiffine.koch@gmail.com' }, function(err, accounts) {
 //   accounts.each(function(account, callback) {
 //     console.log('Account:', account);
 //     callback();
@@ -48,8 +63,8 @@ app.on('stormpath.ready', function() {
 // });
 //
 // var authRequest = {
-//   username: 'tk421',
-//   password: 'Changeme1'
+//   email: 'tiffine.koch@gmail.com',
+//   password: 'password20'
 // };
 //
 // application.authenticateAccount(authRequest, function(err, result) {
