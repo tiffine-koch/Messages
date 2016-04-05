@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Message = require('../models/message');
-var User = require('../models/user');
+// var User = require('../models/user');
 
 router.get('/', function(req, res) {
   Message.find({}, function(err, messages) {

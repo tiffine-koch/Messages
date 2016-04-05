@@ -6,7 +6,7 @@ var Message = require('../models/message');
 
 router.get('/', function(req, res, next) {
   console.log(req.cookies);
-  res.render('index', { title: 'Express' });
+  res.send('profile');
 });
 
 module.exports = router;
